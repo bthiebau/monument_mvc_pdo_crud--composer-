@@ -1,0 +1,23 @@
+{
+    "name": "bastien/monument_mvc_pdo_crud",
+    "version" : "0.0.1",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "bthiebau",
+            "email": "bastien.thiebaut@hotmail.com"
+        }
+    ],
+    "scripts": {
+    "start": "php -S localhost:8000"
+    },
+    "config": {
+  "process-timeout": 0
+    },
+    "require": {}
+     
+}
