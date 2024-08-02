@@ -18,6 +18,8 @@
     "config": {
   "process-timeout": 0
     },
-    "require": {}
+    "require": {
+        "symfony/dotenv": "^7.1"
+    }
      
 }
