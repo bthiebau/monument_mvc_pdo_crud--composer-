@@ -9,6 +9,7 @@ use PDOException;
  */
 class Database{
     private static ?PDO $pdoInstance = null;
+    private const DB_SETTINGS_PATH = __DIR__ . '/../config/db.ini';
 
     private function __construct(){
 
@@ -17,7 +18,16 @@ class Database{
 
             if(self::$pdoInstance === null){
                 try {
-                    self::$pdoInstance = new PDO ('mysql:host=127.0.0.1:3306;charset=utf8mb4;dbname=mainbddpdo', 'root');
+                    [
+                        'DB_DRIVER' =>$driver,
+                        'DB_HOST'   =>$host,
+                        'DB_PORT'   =>$port,
+                        'DB_NAME'   =>$dbName,
+                        'DB_CHARSET'=>$charset,
+                        'DB_USER'   =>$user,
+                        'DB_PASSWORD'=>$password
+                    ] = parse_ini_file(self::DB_SETTINGS_PATH); //On destructure le tableau
+                    self::$pdoInstance = new PDO ("$driver:host=$host;port=$port;charset=$charset;dbname=$dbName", $user, $password);
                 } catch (PDOException $e) {
                 die('Erreur : '.$e->getMessage());
                 }
